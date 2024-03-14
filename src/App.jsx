@@ -1,19 +1,10 @@
-import * as React from "react";
-import { useEffect, useState } from "react";
+import { Countdown } from "./countdown";
 
 const App = () => {
-
-  const [time, setTime] = useState(15);
-
-  useEffect(() => {
-    const timerId = setInterval(() => setTime(t => t - 1), 1000);
-    return () => {
-      clearInterval(timerId);
-    };
-  }, []);
-
-  return <div> {time} </div>;
-};
+  return (
+    <Countdown seconds = {5} minutes = {2} />
+  )
+}
 
 export default App;
 
