@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 
-
-// need to change function to accept argument from main component
 function calculateTimeLeft(month, day, year) {
   
     const difference = +new Date(`${month}/${day}/${year}`) - +new Date();
@@ -33,17 +31,20 @@ function calculateTimeLeft(month, day, year) {
   
     const timerComponents = [];
   
+
+    // check if time conatiner has value for specific interval of time
+    // if success return formated elemtent
     Object.keys(timeLeft).forEach((interval) => {
       if (!timeLeft[interval]) {
         return;
       }
   
-      timerComponents.push(<span>{timeLeft[interval]} {interval} {"  "}</span>);
+      timerComponents.push(<div><span className="font-bold text-2xl">{timeLeft[interval]}</span> <span>{interval}</span></div>);
     });
   
 
     return (
-      <div>
+      <div className="mx-auto mt-2 flex justify-center gap-4">
         {timerComponents.length ? timerComponents : <span>Time's up!</span>}
       </div>
     );
